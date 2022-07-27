@@ -1,0 +1,91 @@
+// Task 1 Number of words and vowels in a sentence
+
+ALGORITHM number_of_word_and_vowel
+VAR 
+	stce,Upstce : STRING[100];
+	nbword,nbvowel,i,j : INTEGER;
+	nbword:=0;
+	nbvowel:=0;
+
+BEGIN
+	Write ("Give sentence for treatement");
+	Read(stce);
+    // Chceck if the sentence do not begin by space and finish by point otherwise do nothing
+	IF ((stce [0] <> ' ') and (stce [stce.length-1]) = '.')) THEN
+     FOR i FROM 0 TO stce.length-1 STEP 1 DO
+      IF (stce[i]= ' ') THEN 
+
+        nbword:= nbword+1;
+      END_IF
+
+     END_FOR   
+    
+       Write ("The number of words in your sentence is",nbword);
+       
+     // Upcases the sentence for to check the vowels  
+       Upstce:= stce.ToUpper();
+     FOR j FROM 0 TO stce.length-1 STEP 1 DO
+      IF ((Upstce[j]='A') or Up(stce[j]='O') or (Upstce[j]='U') or (Upstce[j]='I') or (Upstce[j]='E')) THEN
+
+       nbvowel:= nbvowel+1;  
+      END_IF
+
+     END_FOR
+       Write ("The number of vowels in your sentence is",nbvowel); 
+    ELSE
+     Write ("Your sentence is incorrect");  
+
+    END_IF
+
+END
+
+
+// Task 2 Distinct Sum of sets
+
+ALGORITHM sum_of_sets
+VAR 
+ tab1,tab2 : ARRAY_OF INTEGER[10]; 
+ i,j,k,l,sum : INTEGER;
+ sum:= 0;
+
+BEGIN
+
+  Write ("insert the first set");  
+  FOR i FROM 0 TO  9 STEP 1 DO
+
+       Read(tab1[i]) ; // insert first set
+
+   END_FOR
+  Write ("insert the second set");
+  FOR j FROM 0 TO  9 STEP 1 DO
+
+       Read(tab2[j]) ; // insert second set
+
+   END_FOR
+  
+  //Check SET 1
+  FOR k FROM 0 TO  tab1.length-1 STEP 1 DO
+   FOR l FROM 0 TO  tab2.length-1 STEP 1 DO
+    IF (tab1[k] <> (tab2[l]) THEN  //check element if it is different from set 2
+
+     sum = sum + tab1[k]; // Do the sum of distinct elements from set2 of the set1  
+
+    END_IF
+
+   END_FOR
+  END_FOR
+  //Check SET 2
+  FOR l FROM 0 TO  tab2.length-1 STEP 1 DO
+   FOR k FROM 0 TO  tab1.length-1 STEP 1 DO
+    IF (tab2[l] <> (tab1[k])  THEN //check element if it is different from set 1
+
+     sum = sum + tab2[l]; // Do the sum of distinct elements from set1 of the set2  
+
+    END_IF
+
+   END_FOR
+  END_FOR
+
+  Write ("The sum of the distinct elements from sets is : ", sum); 
+
+END
