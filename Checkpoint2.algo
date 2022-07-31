@@ -1,0 +1,106 @@
+// Task 1 Dot Product function and an Algorithm for check if there are orthogonal
+
+FUNCTION dot_product (vect1,vect2 : ARRAY_OF FLOAT[1]) : FLOAT 
+VAR
+ ps : FLOAT ;
+
+BEGIN
+ IF (vect1.length = vect2.length) THEN
+
+ ps := vect1[0]*vect2[0] + vect1[1]*vect2[1];
+    
+  RETURN ps ;
+ END_IF
+
+ RETURN -1;
+END
+
+ALGORITHM check_orthogonal
+VAR
+ vect1,vect2,tvect1,tvect2 : ARRAY_OF FLOAT[1];
+ vects1,vects2 : STACK;
+ prddot : ARRAY_OF FLOAT[];
+ i,j,k,n,m : INTEGER;
+
+BEGIN
+ Write ("Give the number of pair vectors ");
+ Read(n);
+ Write ("insert the set of  vector 1");
+ FOR i FROM 1 TO  n STEP 1 DO
+  
+  Write ("insert first vector");
+   FOR i FROM 0 TO  vect1.length-1 STEP 1 DO
+
+       Read(vect1[i]) ; // insert first vect
+
+   END_FOR
+  
+  vects1.push(vect1);
+  
+ END_FOR
+ Write ("insert the set of  vector 2");
+  FOR i FROM 1 TO  n STEP 1 DO
+  
+  Write ("insert second vector");
+   FOR j FROM 0 TO  vect2.length-1 STEP 1 DO
+
+       Read(vect2[j]) ; // insert second vect
+
+   END_FOR
+  
+  vects2.push(vect2);
+  
+ END_FOR
+ 
+ prddot := NEW ARRAY_OF FLOAT (n); // allocation memory or n:= prddot.length;
+ FOR m FROM n-1 TO 0 STEP -1 DO
+  
+  tvect1:=vects1.pop();
+  tvect2:=vects2.pop();
+
+  prddot[m] := dot_product(tvect1,tvect2); // call the the function dot_product
+  
+  IF (prddot[m] = 0) THEN
+
+   Write("The vectors [",tvect1[0],",",tvect1[1],"] and [",tvect2[0],",",tvect2[1],"] are orthogonal.");
+   
+  ELSE
+
+   Write("The vectors [",tvect1[0],",",tvect1[1],"] and [",tvect2[0],",",tvect2[1],"] are not orthogonal.");
+  
+  END_IF
+ END_FOR
+
+END 
+
+
+// Task 2 insertion Sort Algorith
+// first we code the swap Algorith
+
+PROCEDURE swap(VAR xp, VAR yp : INTEGER)
+VAR
+   tmp : INTEGER;
+BEGIN
+  tmp := xp;
+  xp := yp;
+  yp := tmp;
+END
+
+PROCEDURE insertion_sort (var tab : ARRAY_OF INTEGER)
+VAR
+ 
+ i,j : INTEGER;
+
+BEGIN
+
+ FOR i FROM 0 TO tab.length-1 STEP 1 DO
+  FOR j FROM i TO tab.length-1 STEP 1 DO
+  
+   IF (tab[j] < tab[i]) THEN
+     swap (tab[i],tab[j]);
+   END_IF 
+
+   END_FOR
+ END_FOR 
+
+END

@@ -68,7 +68,7 @@ BEGIN
    FOR l FROM 0 TO  tab2.length-1 STEP 1 DO
     IF (tab1[k] <> (tab2[l]) THEN  //check element if it is different from set 2
 
-     sum = sum + tab1[k]; // Do the sum of distinct elements from set2 of the set1  
+     sum := sum + tab1[k]; // Do the sum of distinct elements from set2 of the set1  
 
     END_IF
 
@@ -79,7 +79,7 @@ BEGIN
    FOR k FROM 0 TO  tab1.length-1 STEP 1 DO
     IF (tab2[l] <> (tab1[k])  THEN //check element if it is different from set 1
 
-     sum = sum + tab2[l]; // Do the sum of distinct elements from set1 of the set2  
+     sum := sum + tab2[l]; // Do the sum of distinct elements from set1 of the set2  
 
     END_IF
 
