@@ -5,7 +5,7 @@ VAR
 	stce,Upstce : STRING[100];
 	nbword,nbvowel,i,j : INTEGER;
 	nbword:=0;
-	nbvowel:=0;
+	nbvowel:=0;  
 
 BEGIN
 	Write ("Give sentence for treatement");
