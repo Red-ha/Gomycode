@@ -1,10 +1,187 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App() { 
 
-    
-/***********************Regular Ball Super Ball**************************/
+
+
+/************************************************************************/
+/********//*Warming Up (Fundamentals) :Growth of a Population*//*********/
+/************************************************************************/
+
+  //Examples:
+  //nb_year(1500, 5, 100, 5000) -> 15
+  //nb_year(1500000, 2.5, 10000, 2000000) -> 10
+
+  function nb_year (p0,per,comers,inhabit){
+
+    let year = 0;
+
+    while (p0 < inhabit) {
+
+    p0 = p0 + p0*(per/100) + comers;
+    year++;
+    }
+    return year;
+  }
+
+  let year = nb_year(1500,5,100,5000);
+  console.log("It will need "+year+" entire years");
+  year = nb_year(1500000,2.5,10000,2000000);
+  console.log("It will need "+year+" entire years");
+
+
+/************************************************************************/
+/****************//*Data Types:Remove String Spaces*//*******************/
+/************************************************************************/
+
+  //Simple, remove the spaces from the string, 
+  //then return the resultant string.
+  
+
+  function string_space (str){
+
+    let strsp='';
+
+    for (let i = 0; i < str.length ; i++){
+
+      if (str[i] != ' '){
+
+        strsp = strsp+ str[i];
+      }
+    }
+
+    return strsp;
+  }
+
+  let str = string_space("hel lo wor ld in codewar exercise");//helloworldincodewarexercise
+  console.log(str);
+
+
+/************************************************************************/
+/****************//*Algorithms:Find the divisors!*//*********************/
+/************************************************************************/
+
+
+  //divisors(12); // should return [2,3,4,6]
+  //divisors(25); // should return [5]
+  //divisors(13); // should return "13 is prime"
+ 
+  function divisors (integer) {
+
+    const arr = [];
+
+    for (let i = 2 ; (i<integer); i++){
+      if((integer%i) == 0) {
+
+        arr.push(i);
+
+      }
+
+    }
+
+    if (arr.length == 0) console.log(integer,"is prime");
+
+    return arr;
+   }
+
+  const arr = divisors(13); // 13 is prime 
+  const arr = divisors(12); // [2, 3, 4, 6]
+  console.log(arr);
+  
+/************************************************************************/
+/************//*NUMBERS:Sum of the first nth term of Series*//***********/
+/************************************************************************/
+
+ //1 --> 1 --> "1.00"
+ //2 --> 1 + 1/4 --> "1.25"
+ //5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
+
+ function serie (n) {
+
+    let sum = 1;
+
+      if (n == 0) return 0;
+      if (n == 1) return 1;
+      else {
+          for (let i = 0 ; i<= n-2 ; i++){
+            sum = sum + 1/(4+3*i);
+        }
+        return sum;
+      }
+  }
+
+  let calc = serie(5).toFixed(2);
+  let valtxt = calc.toString();
+  console.log(valtxt); // --> "1.57"
+
+/************************************************************************/
+/*****//*Basic Language Features:Are You Playing Banjo?*//***************/
+/************************************************************************/
+
+
+  //name + " plays banjo" 
+  //name + " does not play banjo"
+
+ function Banjo (name) {
+
+    if ((name =='R')||(name =='r')){
+
+      console.log(name+" plays banjo");
+  }
+  else {
+
+      console.log(name+" does not play banjo");
+    }
+  }
+
+  console.log("Are you playing banjo?");
+  Banjo("r");// r plays banjo
+  Banjo("T");// T does not play banjo
+
+/************************************************************************/
+/****//*Conditional Statements (Control Flow):Find the capitals*//*******/
+/************************************************************************/
+
+ function capitalIndex (str) {
+
+    const arr = [];
+
+    for (let i=0 ; i< str.length ;i++){
+      if ((str.charCodeAt(i) >= 65) && (str.charCodeAt(i) <= 90) ) {
+
+        arr.push(i);
+      }
+    }
+      
+    return arr ;
+  }
+
+  console.log(capitalIndex("CodEWaRs"));// Output : [0, 3, 4, 6]
+
+
+/************************************************************************/
+/**********************//*STRINGS:DNA to RNA Conversion*//***************/
+/************************************************************************/
+
+  //"GCAT"  =>  "GCAU"
+   
+ function converse (str1) {		 
+
+  console.log("Input",str1);
+  let str2 = str1.replace(/T/g, "U");
+  
+    return str2;
+  }
+
+ let str = converse ("GCAT");
+ console.log("Output",str); // "Output GCAU"
+
+ 
+/************************************************************************/
+/**********************//*OBJECTS:Regular Ball Super Ball*//*************/
+/************************************************************************/
+
   class Ball {
 
     constructor (type) {
@@ -19,14 +196,126 @@ function App() {
   console.log(ball1.balltype); //regular
   console.log(ball2.balltype); // super
 
+/************************************************************************/
+/*********************//*ARRAYS:Remove the minimum*//********************/
+/************************************************************************/
+
+  // Input  [2, 2, 1, 2, 1]
+
+ function remove_min (arr1){
+
+  console.log("Input",arr1);
+
+  let min = Math.min(...arr1);
+  const index = arr1.indexOf(min);
+  const arr3 = arr1.slice(0,index);
+  const arr4 = arr1.slice(index+1,arr1.length);
+  const arr5 = arr3.concat(arr4);
+
+    return arr5;
+ }
+ 
+ let arr = remove_min([2, 2, 1, 2, 1]);
+ console.log("Output",arr);// Output [2, 2, 2, 1]
 
 
+/************************************************************************/
+/***********************//*Loops:Double Char*//**************************/
+/************************************************************************/
+
+   //* "String"      -> "SSttrriinngg"
+   //* "Hello World" -> "HHeelllloo  WWoorrlldd"
+   //* "1234!_ "     -> "11223344!!__  "
+
+ function double_char(str) {
+
+  let dlbchar='';
+
+  for (let i = 0; i < str.length ; i++) {
+
+  dlbchar = dlbchar + str[i]+ str[i];    
+  
+    }
+
+    return dlbchar ;
+  }
+
+  let str = double_char("String");// SSttrriinngg
+  console.log(str);
+  str = double_char("Hello World"); // HHeelllloo  WWoorrlldd
+  console.log(str);
+  str = double_char("1234!_"); // 11223344!!__
+  console.log(str);
+
+/************************************************************************/
+/**********//*#Changing Gears:Find The Parity Outlier*//*****************/
+/************************************************************************/
+
+   //[2, 4, 0, 100, 4, 11, 2602, 36] 
+   //Should return: 11 (the only odd number)
+
+   //[160, 3, 1719, 19, 11, 13, -21]
+   //Should return: 160 (the only even number)
+
+ function parity (arr) {
+    
+    let part = "";
+
+    if (arr.length >= 3){
+      if ((arr[0]%2) == 0) {
+        if ((arr[1]%2) == 0) { part = "even"}
+        else if ((arr[2]%2) == 0) { part = "even"}
+        else { part = "odd" }
+
+      }else if ((arr[1]%2) == 0) {
+          if (((arr[2]%2) == 0)) { part = "even"}
+          else {part = "odd"}
+
+    } else {part = "odd"}
+
+     return part ;
+   }
+  }
+
+ function find_outlier(arr) {
+
+  let exp = parity(arr);
+  console.log("Input "+exp+" array",arr);
+  let i = 0;
+ 
+  switch(exp) {
+    case "odd" : {
+      for (i = 0; i< arr.length ; i++){
+        if ((arr[i]%2) == 0) return arr[i]; 
+      }
+
+    }
+      break;
+    case "even": {
+      for (i = 0; i< arr.length ; i++){
+        if ((arr[i]%2) != 0) return arr[i]; 
+      }
+    }
+     break;
+
+     default: return 0;
+    } 
+  }
+  
+  let outlier = find_outlier([2, 4, 0, 100, 4, 11, 2602, 36]);
+  console.log("The outlier is :",outlier); // The outlier is : 11
+  outlier = find_outlier([160, 3, 1719, 19, 11, 13, -21]);
+  console.log("The outlier is :",outlier); // // The outlier is : 160
+
+
+/************************************************************************/
+/************************************************************************/
+/************************************************************************/
 
   return (
+  
     <div className="App">
-
-      
-    </div>
+	</div>
   );
 }
 
