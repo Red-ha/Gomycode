@@ -1,0 +1,33 @@
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+
+ 
+/***********************Regular Ball Super Ball**************************/
+  class Ball {
+
+    constructor (type) {
+      (type) ? this.balltype = type : this.balltype = "regular";
+      }
+	}
+
+  let ball1 = new Ball();
+  let ball2 = new Ball("super");
+  
+  
+  console.log(ball1.balltype); //regular
+  console.log(ball2.balltype); // super
+
+
+
+
+  return (
+    <div className="App">
+
+      
+    </div>
+  );
+}
+
+export default App;
